@@ -1,0 +1,24 @@
+body{
+    text-align: center;
+}
+.js-card-container{
+    border: 3px;
+    border-color: blue;
+    border-radius: 10px;
+    border-width: 5px;
+    border-style: solid;
+    width: max-content;
+}
+/* .card-img-top{
+    
+} */
+.img{
+    width: 100px;
+
+}
+ul{
+    width: 70px;
+}
+p{
+    align-items: center;
+}

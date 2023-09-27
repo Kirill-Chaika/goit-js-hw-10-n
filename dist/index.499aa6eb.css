@@ -1,0 +1,23 @@
+body {
+  text-align: center;
+}
+
+.js-card-container {
+  width: max-content;
+  border: 5px solid #00f;
+  border-radius: 10px;
+}
+
+.img {
+  width: 100px;
+}
+
+ul {
+  width: 70px;
+}
+
+p {
+  align-items: center;
+}
+
+/*# sourceMappingURL=index.499aa6eb.css.map */

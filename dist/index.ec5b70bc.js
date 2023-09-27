@@ -503,34 +503,183 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"1e5vt":[function(require,module,exports) {
-const creatInfo = (pokim)=>{
-    return pokim.map(({ name , weight , height , abilities , sprites  })=>`<div class="card">
-        <div class="card-img-top">
-            <img src="${sprites.front_default}" alt="${name}">
-        </div>
-        <div class="card-body">
-            <h2 class="card-title">Имя: ${name}</h2>
-            <p class="card-text">Вес: ${weight}</p>
-            <p class="card-text">Рост: ${height}</p>
-    
-            <p class="card-text">Умения</p>
-    
-            <ul class="list-group">
-                <li class="list-group-item">${abilities.ability.name}</li>
-            </ul>
-        </div>
-        </div>`);
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _apiService = require("./api-service");
+var _apiServiceDefault = parcelHelpers.interopDefault(_apiService);
+var _getRefs = require("./get-refs");
+var _getRefsDefault = parcelHelpers.interopDefault(_getRefs);
+var _newsService = require("./Components/news-service");
+var _newsServiceDefault = parcelHelpers.interopDefault(_newsService);
+// const creatInfo = (pokemon) => {
+//   return pokemon
+//     .map(
+//       ({ name, weight, height, sprites }) =>
+//         `<div class="card">
+//         <div class="card-img-top">
+//             <img src="${sprites.front_default}" alt="${name}">
+//         </div>
+//         <div class="card-body">
+//             <h2 class="card-title">Имя: ${name}</h2>
+//             <p class="card-text">Вес: ${weight}</p>
+//             <p class="card-text">Рост: ${height}</p>
+//         </div>
+//         </div>`
+//     )
+//     .join();
+// };
+const creatInfoCat = (cat)=>{
+    return cat.map(({ url , urlToImage , title , author , description  })=>`<li>
+        <a href="${url}" target="_blank" rel="noopener noreferrer">
+          <article>
+            <img src="${urlToImage}" alt="" width="480">
+            <h2>${title}</h2>
+            <p>Post by: ${author}</p>
+            <p>${description}</p>
+          </article>
+        </a>
+      </li>`).join();
 };
-fetch("https://pokeapi.co/api/v2/pokemon/2").then((response)=>{
-    return response.json();
-}).then((pokemon)=>{
-    console.log(pokemon);
-    const markup = creatInfo(pokemon);
-    console.log(markup);
-}).catch((error)=>{
-    console.log(error);
-});
+// const createResult = (country) => {
+//   if (country.length === 1) {
+//     cleanMarkup(countryList);
+//     countryInfo.innerHTML = creatInfo(country);
+//   } else {
+//     cleanMarkup(countryInfo);
+//     countryList.innerHTML = creatList(country);
+//   }
+// };
+// const refs = getRefs();
+// refs.searchForm.addEventListener("submit", onSearch);
+// function onSearch(e) {
+//   e.preventDefault();
+//   const form = e.currentTarget;
+//   const searchQuery = form.elements.query.value;
+//   API.fetchPokemon(searchQuery)
+//     .then(renderPokemonCard)
+//     .catch(onFetchError)
+//     .finally(() => form.reset());
+// }
+// function renderPokemonCard(pokemon) {
+//   const massToMarkup = [pokemon];
+//   const markup = creatInfo(massToMarkup);
+//   refs.cardContainer.innerHTML = markup;
+// }
+// function onFetchError (error) {
+//   alert("Упс, что-то пошло не так , мы не нашли вашего покемона");
+// }
+// =========================================================================
+// 643a28fe9d3045ffa0d46bffb6ab95e6
+const refs = {
+    searchForm: document.querySelector(".js-search-form"),
+    articlesContainer: document.querySelector(".js-articles-container"),
+    loadMoreBtn: document.querySelector('[data-action="load-more"]')
+};
+const newsApiService = new (0, _newsServiceDefault.default)();
+refs.searchForm.addEventListener("submit", onSearch);
+refs.loadMoreBtn.addEventListener("click", onLoadMore);
+function onSearch(e) {
+    e.preventDefault();
+    newsApiService.query = e.currentTarget.elements.query.value;
+    newsApiService.resetPage();
+    newsApiService.fetchArticles().then(appendArticlesMarkup);
+}
+function onLoadMore() {
+    newsApiService.fetchArticles().then(appendArticlesMarkup);
+}
+function appendArticlesMarkup(articles) {
+    refs.articlesContainer.insertAdjacentHTML("beforeend", creatInfoCat(articles));
+}
 
-},{}]},["2Zgfi","1e5vt"], "1e5vt", "parcelRequired7c6")
+},{"./api-service":"fU3Eh","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./get-refs":"e9M7n","./Components/news-service":"32K5U"}],"fU3Eh":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const BASE_URL = "https://pokeapi.co/api/v2";
+function fetchPokemon(pokemonId) {
+    return fetch(`${BASE_URL}/pokemon/${pokemonId}`).then((response)=>response.json());
+}
+exports.default = {
+    fetchPokemon
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"e9M7n":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function getRefs() {
+    return {
+        cardContainer: document.querySelector(".js-card-container"),
+        searchForm: document.querySelector(".js-search-form"),
+        searchForm2: document.querySelector(".js-search-form"),
+        articlesContainer: document.querySelector(".js-articles-container")
+    };
+}
+exports.default = getRefs;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"32K5U":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class newsApiService {
+    constructor(){
+        this.searchQuery = "";
+        this.page = 1;
+    }
+    fetchArticles() {
+        console.log(this);
+        const options = {
+            headers: {
+                Authorization: "643a28fe9d3045ffa0d46bffb6ab95e6"
+            }
+        };
+        const url = `https://newsapi.org/v2/everything?q=${this.searchQuery}&language=en&pageSize=10&page=${this.page}`;
+        return fetch(url, options).then((r)=>r.json()).then((data)=>{
+            this.incrementPage();
+            return data.articles;
+        });
+    }
+    incrementPage() {
+        this.page += 1;
+    }
+    resetPage() {
+        this.page = 1;
+    }
+    get query() {
+        return this.searchQuery;
+    }
+    set query(newQuery) {
+        this.searchQuery = newQuery;
+    }
+}
+exports.default = newsApiService;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["2Zgfi","1e5vt"], "1e5vt", "parcelRequired7c6")
 
 //# sourceMappingURL=index.ec5b70bc.js.map
