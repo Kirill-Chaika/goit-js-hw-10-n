@@ -503,6 +503,7 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"8lqZg":[function(require,module,exports) {
+fetch("https://api.thecatapi.com/v1/images/search?limit=10").then((cat)=>console.log(cat)).then(console.error());
 
 },{}]},["1RB6v","8lqZg"], "8lqZg", "parcelRequired7c6")
 
