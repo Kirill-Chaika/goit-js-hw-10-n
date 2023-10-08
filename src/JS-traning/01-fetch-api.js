@@ -1,6 +1,8 @@
-import API from "./api-service";
-import getRefs from "./get-refs";
-import NewsApiService from "./Components/news-service";
+'use strict'
+
+// import API from "./api-service";
+// import getRefs from "./get-refs";
+// import NewsApiService from "./Components/news-service";
 // const creatInfo = (pokemon) => {
 //   return pokemon
 //     .map(
@@ -19,23 +21,23 @@ import NewsApiService from "./Components/news-service";
 //     .join();
 // };
 
-const creatInfoCat = (cat) => {
-  return cat
-    .map(
-      ({ url, urlToImage, title, author, description }) =>
-        `<li>
-        <a href="${url}" target="_blank" rel="noopener noreferrer">
-          <article>
-            <img src="${urlToImage}" alt="" width="480">
-            <h2>${title}</h2>
-            <p>Post by: ${author}</p>
-            <p>${description}</p>
-          </article>
-        </a>
-      </li>`
-    )
-    .join();
-};
+// const creatInfoCat = (cat) => {
+//   return cat
+//     .map(
+//       ({ url, urlToImage, title, author, description }) =>
+//         `<li>
+//         <a href="${url}" target="_blank" rel="noopener noreferrer">
+//           <article>
+//             <img src="${urlToImage}" alt="" width="480">
+//             <h2>${title}</h2>
+//             <p>Post by: ${author}</p>
+//             <p>${description}</p>
+//           </article>
+//         </a>
+//       </li>`
+//     )
+//     .join();
+// };
 
 
 
@@ -73,27 +75,40 @@ const creatInfoCat = (cat) => {
 // =========================================================================
 // 643a28fe9d3045ffa0d46bffb6ab95e6
 
-const refs = {
-  searchForm: document.querySelector(".js-search-form"),
-  articlesContainer: document.querySelector(".js-articles-container"),
-  loadMoreBtn: document.querySelector('[data-action="load-more"]'),
-};
+// const refs = {
+//   searchForm: document.querySelector(".js-search-form"),
+//   articlesContainer: document.querySelector(".js-articles-container"),
+//   loadMoreBtn: document.querySelector('[data-action="load-more"]'),
+// };
 
-const newsApiService = new NewsApiService();
+// const newsApiService = new NewsApiService();
 
-refs.searchForm.addEventListener("submit", onSearch);
-refs.loadMoreBtn.addEventListener("click", onLoadMore);
+// refs.searchForm.addEventListener("submit", onSearch);
+// refs.loadMoreBtn.addEventListener("click", onLoadMore);
 
-function onSearch(e) {
-  e.preventDefault();
+// function onSearch(e) {
+//   e.preventDefault();
 
-  newsApiService.query = e.currentTarget.elements.query.value;
-  newsApiService.resetPage();
-  newsApiService.fetchArticles().then(appendArticlesMarkup)
-}
-function onLoadMore() {
-  newsApiService.fetchArticles().then(appendArticlesMarkup)
-}
-function appendArticlesMarkup(articles) {
-  refs.articlesContainer.insertAdjacentHTML('beforeend', creatInfoCat(articles));
-}
+//   newsApiService.query = e.currentTarget.elements.query.value;
+//   newsApiService.resetPage();
+//   newsApiService.fetchArticles().then(appendArticlesMarkup)
+// }
+// function onLoadMore() {
+//   newsApiService.fetchArticles().then(appendArticlesMarkup)
+// }
+// function appendArticlesMarkup(articles) {
+//   refs.articlesContainer.insertAdjacentHTML('beforeend', creatInfoCat(articles));
+// }
+
+
+
+
+
+
+
+
+
+console.log()
+console.log()
+
+
