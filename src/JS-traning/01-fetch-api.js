@@ -100,15 +100,18 @@
 //   refs.articlesContainer.insertAdjacentHTML('beforeend', creatInfoCat(articles));
 // }
 
+function formatMessage(message, maxLength) {
+    let result;
+    // Change code below this line
+    result = message.slice(maxLength)
+    /// Change code above this line
+    return result;
+  }
+  
 
 
-
-
-
-
-
-
-console.log()
+console.log(formatMessage("Curabitur ligula sapien", 16)) 
+console.log(formatMessage("Curabitur ligula sapien", 23))
 console.log()
 
 
