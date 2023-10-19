@@ -100,16 +100,15 @@
 //   refs.articlesContainer.insertAdjacentHTML('beforeend', creatInfoCat(articles));
 // }
 
-const start = 3;
-const end = 7;
+function findLongestWord(string) {
+  // Change code below this line
+  
 
-for (let i = ; i <= ; i += ) { // Change this line
-  console.log(i);
+
+  // Change code above this line
 }
 
-
-
-console.log()
+console.log(findLongestWord("The quick brown fox jumped over the lazy dog"))//jumped
 console.log()
 console.log()
 console.log()
