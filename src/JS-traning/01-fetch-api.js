@@ -100,15 +100,16 @@
 //   refs.articlesContainer.insertAdjacentHTML('beforeend', creatInfoCat(articles));
 // }
 
-function findLongestWord(string) {
+function createArrayOfNumbers(min, max) {
+  const numbers = [];
   // Change code below this line
-  
-
-
+  numbers.push()
   // Change code above this line
+  return numbers;
 }
 
-console.log(findLongestWord("The quick brown fox jumped over the lazy dog"))//jumped
+
+console.log(createArrayOfNumbers())
 console.log()
 console.log()
 console.log()
