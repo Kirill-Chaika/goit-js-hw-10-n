@@ -99,24 +99,27 @@
 // function appendArticlesMarkup(articles) {
 //   refs.articlesContainer.insertAdjacentHTML('beforeend', creatInfoCat(articles));
 // }
-
 function filterArray(numbers, value) {
   // Change code below this line
-  for (let i = 0; i < numbers.length; i++) {
-    console.log(i)
-    
+
+  let mas = []
+  for (let i = 0; i < numbers.length; i++) {    
+    if (numbers[i]> value){
+      let co =  mas.push(numbers[i])
+    }
   }
+
+  console.log(mas)
 
 
  // Change code above this line
 }
 
 
-
-console.log(filterArray([1, 2, 3, 4, 5], 3)) //[4, 5]
-console.log()
-console.log()
-console.log()
+filterArray([1, 2, 3, 4, 5], 3)
+filterArray([1, 2, 3, 4, 5], 4)
+filterArray([1, 2, 3, 4, 5], 5)
+filterArray()
 
 
 
