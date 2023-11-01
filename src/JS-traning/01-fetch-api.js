@@ -100,16 +100,20 @@
 //   refs.articlesContainer.insertAdjacentHTML('beforeend', creatInfoCat(articles));
 // }
 
-function createArrayOfNumbers(min, max) {
-  const numbers = [];
+function filterArray(numbers, value) {
   // Change code below this line
-  numbers.push()
-  // Change code above this line
-  return numbers;
+  for (let i = 0; i < numbers.length; i++) {
+    console.log(i)
+    
+  }
+
+
+ // Change code above this line
 }
 
 
-console.log(createArrayOfNumbers())
+
+console.log(filterArray([1, 2, 3, 4, 5], 3)) //[4, 5]
 console.log()
 console.log()
 console.log()
